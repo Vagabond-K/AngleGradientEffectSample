@@ -58,7 +58,7 @@ namespace AngleGradientEffectSample
             }
         }
 
-        // 굳이 PropertyMetadata를 재정의 한 이유는 Xaml 디자이너에서 GradientStop을 추가할 때 나오는 경고를 없에고 싶어서입니다.
+        // 굳이 PropertyMetadata를 재정의 한 이유는 Xaml 디자이너에서 GradientStop을 추가할 때 나오는 경고를 없애고 싶어서입니다.
         class GradientStopsPropertyMetadata : PropertyMetadata
         {
             public static FieldInfo DefaultGradientStopFieldInfo = typeof(PropertyMetadata).GetField("_defaultValue", BindingFlags.NonPublic | BindingFlags.Instance);
