@@ -11,4 +11,10 @@ AngleGradientEffect 클래스에 대한 픽셀 셰이더는 AngleGradientEffect.
 샘플 프로그램을 만들면서, 로딩 인디케이터도 함께 만들어 봤습니다.  
 혹시라도 이런 기능이 필요했던 분들께 도움이 되었으면 좋겠습니다.  
 - 샘플 프로그램 화면
-![AngleGradientEffectSample](https://github.com/user-attachments/assets/06b12674-f057-42af-9b40-2dd1b15e5d7f)
+
+![AngleGradientEffectSample](https://github.com/user-attachments/assets/79f86fd7-c8f7-4ef3-9f75-9096bb6edb93)  
+
+
+
+https://github.com/user-attachments/assets/3ef1a3ed-eb4a-4366-9239-0d70a465a854
+
