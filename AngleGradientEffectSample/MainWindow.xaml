@@ -8,10 +8,11 @@
     xmlns:local="clr-namespace:AngleGradientEffectSample"
     mc:Ignorable="d"
     Title="Angle Gradient Effect Sample"
-    Height="600" Width="800"
+    SizeToContent="WidthAndHeight"
+    ResizeMode="CanMinimize"
     Background="Black">
-    <DockPanel UseLayoutRounding="True">
-        <DockPanel.Background>
+    <Grid UseLayoutRounding="True">
+        <Grid.Background>
             <VisualBrush TileMode="Tile" Viewport="0,0,10,10" ViewportUnits="Absolute" Viewbox="0,0,10,10" ViewboxUnits="Absolute">
                 <VisualBrush.Visual>
                     <UniformGrid Width="10" Height="10" Background="Black">
@@ -22,11 +23,13 @@
                     </UniformGrid>
                 </VisualBrush.Visual>
             </VisualBrush>
-        </DockPanel.Background>
-        <UniformGrid Columns="1" Margin="10">
+        </Grid.Background>
+
+        <UniformGrid Rows="2" Margin="10">
             <UniformGrid.Resources>
                 <Style TargetType="Rectangle">
                     <Setter Property="Fill" Value="White"/>
+                    <Setter Property="Height" Value="100"/>
                     <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"/>
                     <Setter Property="Margin" Value="5"/>
                 </Style>
@@ -34,27 +37,12 @@
             <Rectangle>
                 <Rectangle.Effect>
                     <local:AngleGradientEffect>
-                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#00FFFFFF" Offset="0"/>
                         <GradientStop Color="White" Offset="1"/>
                     </local:AngleGradientEffect>
                 </Rectangle.Effect>
             </Rectangle>
-            <Rectangle>
-                <Rectangle.Effect>
-                    <local:AngleGradientEffect>
-                        <GradientStop Color="Red" Offset="0"/>
-                        <GradientStop Color="Blue" Offset="1"/>
-                    </local:AngleGradientEffect>
-                </Rectangle.Effect>
-            </Rectangle>
-            <Rectangle Fill="White">
-                <Rectangle.Effect>
-                    <local:AngleGradientEffect>
-                        <GradientStop Color="#FF00FF00" Offset="0"/>
-                        <GradientStop Color="#0000FF00" Offset="1"/>
-                    </local:AngleGradientEffect>
-                </Rectangle.Effect>
-            </Rectangle>
+
             <Rectangle>
                 <Rectangle.Effect>
                     <local:AngleGradientEffect>
@@ -68,30 +56,123 @@
                     </local:AngleGradientEffect>
                 </Rectangle.Effect>
             </Rectangle>
-        </UniformGrid>
-        <Viewbox>
-            <Rectangle
-                Width="100" Height="100" Fill="White" RenderTransformOrigin="0.5,0.5"
-                Clip="F1 M 45.6076,15.2797C 26.4282,17.7094 12.8499,35.227 15.2797,54.4064C 17.7094,73.5858 35.227,87.164 54.4064,84.7343C 73.5858,82.3046 87.164,64.787 84.7343,45.6076C 82.5467,28.3397 68.1288,15.6121 51.2792,15.0199L 51.6427,5.0236C 73.3065,5.78498 91.8438,22.149 94.6564,44.3506C 97.7803,69.0098 80.3225,91.5325 55.6633,94.6564C 31.0041,97.7803 8.48148,80.3225 5.35755,55.6634C 2.23363,31.0042 19.6914,8.48149 44.3506,5.35756C 47.0905,5.01047 49.593,6.95023 49.9401,9.69013C 50.2872,12.43 48.3475,14.9326 45.6076,15.2797 Z ">
-                <Rectangle.RenderTransform>
-                    <RotateTransform x:Name="angle" Angle="0"/>
-                </Rectangle.RenderTransform>
-                <Rectangle.Triggers>
-                    <EventTrigger RoutedEvent="Loaded">
-                        <BeginStoryboard>
-                            <Storyboard RepeatBehavior="Forever">
-                                <DoubleAnimation From="0" To="360" Storyboard.TargetName="angle" Storyboard.TargetProperty="Angle"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Rectangle.Triggers>
+
+            <Rectangle Fill="White">
                 <Rectangle.Effect>
                     <local:AngleGradientEffect>
-                        <GradientStop Color="#00808080" Offset="0"/>
-                        <GradientStop Color="#FF808080" Offset="1"/>
+                        <GradientStop Color="#0000FFFF" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
                     </local:AngleGradientEffect>
                 </Rectangle.Effect>
             </Rectangle>
-        </Viewbox>
-    </DockPanel>
+
+            <Viewbox Width="100" Height="100">
+                <Border Margin="6" RenderTransformOrigin="0.5,0.5">
+                    <Border.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation From="0" To="360" Storyboard.TargetName="angle" Storyboard.TargetProperty="Angle"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Border.Triggers>
+                    <Border.RenderTransform>
+                        <RotateTransform x:Name="angle" Angle="0"/>
+                    </Border.RenderTransform>
+                    <Ellipse Width="100" Height="100" Fill="White" Margin="5">
+                        <Ellipse.Effect>
+                            <local:AngleGradientEffect>
+                                <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </local:AngleGradientEffect>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Border.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border Width="100" Height="100" Background="Transparent">
+                                    <Ellipse StrokeThickness="11" Stroke="White" StrokeDashArray="18.5 1.5" StrokeDashCap="Round"/>
+                                </Border>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Border.OpacityMask>
+                </Border>
+            </Viewbox>
+
+            <Viewbox Width="100" Height="100">
+                <Border Margin="6" RenderTransformOrigin="0.5,0.5">
+                    <Border.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation From="0" To="360" Storyboard.TargetName="angle" Storyboard.TargetProperty="Angle"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Border.Triggers>
+                    <Border.RenderTransform>
+                        <RotateTransform Angle="{Binding Angle, ElementName=angle}"/>
+                    </Border.RenderTransform>
+                    <Ellipse Width="100" Height="100" Fill="White" Margin="5">
+                        <Ellipse.Effect>
+                            <local:AngleGradientEffect>
+                                <GradientStop Color="Red" Offset="0"/>
+                                <GradientStop Color="Yellow" Offset="0.166666666666"/>
+                                <GradientStop Color="Lime" Offset="0.33333333333"/>
+                                <GradientStop Color="Cyan" Offset="0.5"/>
+                                <GradientStop Color="Blue" Offset="0.66666666666"/>
+                                <GradientStop Color="Magenta" Offset="0.83333333333"/>
+                                <GradientStop Color="Red" Offset="1"/>
+                            </local:AngleGradientEffect>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Border.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border Width="100" Height="100" Background="Transparent">
+                                    <Ellipse StrokeThickness="5" Stroke="White" StrokeDashCap="Round"/>
+                                </Border>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Border.OpacityMask>
+                </Border>
+            </Viewbox>
+
+            <Viewbox Width="100" Height="100">
+                <Grid RenderTransformOrigin="0.5,0.5">
+                    <Grid.CacheMode>
+                        <BitmapCache/>
+                    </Grid.CacheMode>
+                    <Grid.RenderTransform>
+                        <RotateTransform Angle="{Binding Angle, ElementName=angle}"/>
+                    </Grid.RenderTransform>
+                    <Border>
+                        <Ellipse Width="100" Height="100" Fill="White">
+                            <Ellipse.Effect>
+                                <local:AngleGradientEffect>
+                                    <GradientStop Color="#0000FFFF" Offset="0.1"/>
+                                    <GradientStop Color="#FFFFFF" Offset="0.9"/>
+                                </local:AngleGradientEffect>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                        <Border.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="100" Height="100" Background="Transparent">
+                                        <Border.Effect>
+                                            <BlurEffect Radius="10"/>
+                                        </Border.Effect>
+                                        <Ellipse StrokeThickness="15" Stroke="White" StrokeDashArray="12.5 2" StrokeDashCap="Round"/>
+                                    </Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.OpacityMask>
+                    </Border>
+                </Grid>
+            </Viewbox>
+
+        </UniformGrid>
+
+    </Grid>
 </vk:ThemeWindow>
