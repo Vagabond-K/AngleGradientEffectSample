@@ -102,15 +102,6 @@
 
             <Viewbox Width="100" Height="100">
                 <Border Margin="6" RenderTransformOrigin="0.5,0.5">
-                    <Border.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard RepeatBehavior="Forever">
-                                    <DoubleAnimation From="0" To="360" Storyboard.TargetName="angle" Storyboard.TargetProperty="Angle"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Border.Triggers>
                     <Border.RenderTransform>
                         <RotateTransform Angle="{Binding Angle, ElementName=angle}"/>
                     </Border.RenderTransform>
